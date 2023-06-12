@@ -1,0 +1,105 @@
+.form-container {
+  width: 18.75rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+  border-radius: 0.3125rem;
+  position: absolute;
+  top: 15%;
+  left: 38%;
+  border: 1px solid #808080;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
+}
+
+.form-container h1 {
+  font-size: 1.75rem;
+  text-align: center;
+  color: #2f4f4f;
+  font-weight: normal;
+}
+
+.form-container label {
+  font-size: 1.125rem;
+  display: block;
+  margin-bottom: 0.3125rem;
+  color: #72380f;
+}
+
+.form-container input[type="text"],
+.form-container select {
+  width: 100%;
+  padding: 0.625rem;
+  border-radius: 0.1875rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid #ccc;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+}
+
+.form-container input[type="text"]:focus,
+.form-container select:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: #6e8efb;
+  box-shadow: 0 0 0.3125rem #6e8efb;
+}
+
+.form-container button[type="submit"] {
+  background-color: #5369f8;
+  color: #fff;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.1875rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: #6e8efb;
+}
+
+div select.ng-invalid.ng-touched {
+  border: 1px solid #ff0000;
+}
+
+div input#name.ng-invalid.ng-touched {
+  border: 1px solid #ff0000;
+}
+
+small {
+  color: #ff0000;
+}
+
+form div {
+  padding: 0.625rem;
+}
+
+.submit-button {
+  margin-top: 0.625rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .form-container {
+    top: 23%;
+    width: 85%;
+    left: 6%;
+    padding: 0.3125rem;
+  }
+
+  .form-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-container input[type="text"],
+  .form-container select {
+    font-size: 0.875rem;
+    padding: 0.3125rem;
+  }
+
+  .submit-button {
+    margin-top: 1.25rem;
+  }
+}

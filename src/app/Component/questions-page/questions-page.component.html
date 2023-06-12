@@ -1,0 +1,36 @@
+<div class="quiz-container" *ngIf="currentQuestionIndex < questions.length">
+  <h1 *ngIf="currentQuestionIndex == 0">Welcome {{ name }}!</h1>
+  <h2>Question {{ currentQuestionIndex + 1 }}</h2>
+  <h3>{{ questions[currentQuestionIndex].question | decodeUri }}</h3>
+  <ul>
+    <li
+      *ngFor="let answer of shuffledAnswers"
+      (click)="selectAnswer(answer.answer)"
+      [ngClass]="{
+        'correct-answer':
+          answer.isCorrect &&
+          (answer.isSelected || selectedAnswer === answer.answer),
+        'wrong-answer': !answer.isCorrect && answer.isSelected,
+        'highlight-correct': wrongAnswer === answer.answer
+      }"
+    >
+      {{ answer.answer | decodeUri }}
+    </li>
+  </ul>
+
+  <div class="timer" *ngIf="timeRemaining > 0">
+    <p>Time Remaining: {{ timeRemaining }} seconds</p>
+  </div>
+
+  <div class="time-up" *ngIf="timeRemaining === 0">
+    <p>Time's up!</p>
+  </div>
+
+  <button
+    class="next-button"
+    (click)="nextQuestion()"
+    [disabled]="isNextButtonDisabled()"
+  >
+    {{ currentQuestionIndex < questions.length - 1 ? "Next" : "Submit Quiz" }}
+  </button>
+</div>

@@ -1,0 +1,65 @@
+<div class="form-container">
+  <h1>Quiz Master</h1>
+  <form (ngSubmit)="submitForm()" [formGroup]="reactiveForm">
+    <div>
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter your name"
+        formControlName="name"
+        required
+      />
+      <small
+        *ngIf="
+          reactiveForm.controls.name.invalid &&
+          reactiveForm.controls.name.touched
+        "
+      >
+        This field is required</small
+      >
+    </div>
+    <div>
+      <label for="category">Category:</label>
+      <select id="category" name="category" formControlName="category" required>
+        <option value="" disabled>Select a category</option>
+        <option *ngFor="let option of categoryOptions" [value]="option.id">
+          {{ option.name }}
+        </option>
+      </select>
+
+      <small
+        *ngIf="
+          reactiveForm.controls.category.invalid &&
+          reactiveForm.controls.category.touched
+        "
+        >This field is required</small
+      >
+    </div>
+    <div>
+      <label for="difficulty">Difficulty Level:</label>
+      <select
+        id="difficulty"
+        name="difficulty"
+        formControlName="difficulty"
+        required
+      >
+        <option value="" disabled selected>Select a difficulty level</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <small
+        *ngIf="
+          reactiveForm.controls.difficulty.invalid &&
+          reactiveForm.controls.difficulty.touched
+        "
+        >This field is required</small
+      >
+    </div>
+    <div class="submit-button">
+      <button type="submit">Play</button>
+    </div>
+  </form>
+</div>
