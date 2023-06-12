@@ -84,8 +84,6 @@ describe('QuestionsPageComponent', () => {
     };
     history.pushState(dummyState, '');
     component.questions = dummyState.data.results;
-
-    fixture.detectChanges();
   });
 
   afterEach(() => {
@@ -194,5 +192,37 @@ describe('QuestionsPageComponent', () => {
     const isCorrect = component.isAnswerCorrect(selectedAnswer);
 
     expect(isCorrect).toBe(false);
+  });
+
+  it('should navigate to the specified router with the respective state', () => {
+    component.name = 'Yuvaraj';
+    component.currentQuestionIndex = 10;
+    spyOn(component['router'], 'navigate');
+    spyOn(component, 'calculateScore');
+    component.nextQuestion();
+
+    expect(component.calculateScore).toHaveBeenCalled();
+    expect(component['router'].navigate).toHaveBeenCalledWith(['/result'], {
+      state: { score: undefined, name: component.name },
+    });
+  });
+
+  it('should call nextQuestion when timeRemaining reaches 0', fakeAsync(() => {
+    spyOn(component, 'nextQuestion');
+    component.startTimer();
+
+    tick(9000);
+    expect(component.nextQuestion).not.toHaveBeenCalled();
+
+    tick(2000);
+    expect(component.nextQuestion).toHaveBeenCalled();
+
+    clearInterval(component.timer);
+  }));
+
+  it('should return true if selectedAnswer is empty', () => {
+    component.selectedAnswer = '';
+    const result = component.isNextButtonDisabled();
+    expect(result).toBe(true);
   });
 });
