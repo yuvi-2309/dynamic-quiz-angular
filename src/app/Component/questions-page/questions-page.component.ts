@@ -8,7 +8,6 @@ import { Question } from 'src/app/Interfaces/interface';
   templateUrl: './questions-page.component.html',
   styleUrls: ['./questions-page.component.css'],
 })
-
 export class QuestionsPageComponent implements OnInit, OnDestroy {
   questions: Question[] = [];
   shuffledAnswers: ShuffledAnswer[] = [];
@@ -57,7 +56,7 @@ export class QuestionsPageComponent implements OnInit, OnDestroy {
       });
     } else {
       const score = this.calculateScore();
-      localStorage.removeItem("auth")
+      localStorage.removeItem('auth');
       this.router.navigate(['/result'], {
         state: { score: score, name: this.name },
       });
@@ -138,4 +137,3 @@ export class QuestionsPageComponent implements OnInit, OnDestroy {
     clearInterval(this.timer);
   }
 }
-

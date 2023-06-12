@@ -38,7 +38,7 @@ export class WelcomePageComponent implements OnInit {
         this.router.navigate(['/questions'], {
           state: { data: this.questions, name: this.reactiveForm.value.name },
         });
-        localStorage.setItem("auth", "true")
+        localStorage.setItem('auth', 'true');
       });
     } else {
       Object.keys(this.reactiveForm.controls).forEach((controlName) => {
